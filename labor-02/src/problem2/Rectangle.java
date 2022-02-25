@@ -1,22 +1,22 @@
 package problem2;
 
 public class Rectangle {
-    private int length;
-    private int width;
-    public  Rectangle(){
-        this.length = 5;
-        this.width = 4;
+    private double length;
+    private double width;
+    public  Rectangle(double length,double width){
+        this.length = length;
+        this.width = width;
     }
-    public int area(){
+    public double area(){
         return length * width;
     }
-    public int perimeter(){
+    public double perimeter(){
         return 2 * (length + width);
     }
-    public int getLength(){
+    public double getLength(){
         return this.length;
     }
-    public int getWidth(){
+    public double getWidth(){
         return this.width;
     }
 }
