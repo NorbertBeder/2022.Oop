@@ -20,8 +20,14 @@ public class MyDate {
     public int getDay(){
         return this.day;
     }
-    public String toString(){
-        return (this.year+ "." + this.month + "." + this.day);
+
+    @Override
+    public String toString() {
+        return "MyDate{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                '}';
     }
 }
 
