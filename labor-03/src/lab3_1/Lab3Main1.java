@@ -13,12 +13,12 @@ public class Lab3Main1 {
         customer2.setAccount(new BankAccount("OTP00002"));
         System.out.println(customer2);
         customer2.getAccount().deposit(2000);
-        customer2.getAccount().withdraw(500);
-        customer2.closeAccount();
+        customer2.getAccount().withdraw(1500);
+        //customer2.closeAccount();
         System.out.println(customer2);
-
         customer2.setLastName("BLACK");
-        customer2.setAccount(customer1.getAccount());
+        customer2.getAccount().deposit(customer1.getAccount().getBalance());
+        //customer2.setAccount(customer1.getAccount());
         System.out.println(customer1.toString());
         System.out.println(customer2.toString());
     }

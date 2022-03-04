@@ -1,12 +1,10 @@
 package lab3_2;
 
-import lab3_1.BankAccount;
-
 public class Customer {
     private String firstName;
     private String lastName;
     public static final int MAX_ACCOUNTS = 10;
-    private int numOfAccounts;
+    private int numOfAccounts = 0;
     private BankAccount[] accounts = new BankAccount[MAX_ACCOUNTS];
 
     public Customer(String firstName, String lastName) {
@@ -37,10 +35,10 @@ public class Customer {
         }
     }
 
-    public String getAccount(String accountNumber) {
+    public BankAccount getAccount(String accountNumber) {
         for (int i = 0; i < numOfAccounts; i++){
             if(accounts[i].getAccountNumber().equals(accountNumber)) {
-                return accounts[i].getAccountNumber();
+                return accounts[i];
             }
         }
         return null;
@@ -49,16 +47,15 @@ public class Customer {
     public void closeAccount(String accountId){
         for (int i = 0; i < numOfAccounts; i++){
             if(accounts[i].getAccountNumber().equals(accountId)){
-                accounts[i] = accounts[accounts.length - 1];
+                accounts[i] = accounts[numOfAccounts-1];
                 this.numOfAccounts--;
-                return;
             }
         }
     }
 
     public String toString(){
         StringBuffer result = new StringBuffer();
-        result.append(firstName + ' ' + lastName + "accounts:\n");
+        result.append(firstName + ' ' + lastName + " accounts:\n");
         for (int i = 0; i < numOfAccounts; i++){
             result.append("\t" + accounts[i].toString() + "\n");
         }
