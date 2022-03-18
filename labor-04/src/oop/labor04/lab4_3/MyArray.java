@@ -10,10 +10,14 @@ public class MyArray {
 
     public MyArray(int length) {
         this.length = length;
+        elements = new double[this.length];
     }
 
     public MyArray(double[] elements) {
-        this.elements = elements;
+        this.elements = new double[elements.length];
+        for (int i = 0; i < elements.length-1; i++) {
+                this.elements[i] = elements[i];
+        }
     }
 
     public MyArray(String fileName) {
