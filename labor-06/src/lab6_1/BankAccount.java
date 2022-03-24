@@ -14,7 +14,7 @@ public class BankAccount {
         }
 
         private static String createAccountNumber(){
-            return String.format("%s%s%7d",PREFIX,"",numAccounts).replace(' ', '0');
+            return String.format("%s%7d",PREFIX,numAccounts).replace(' ', '0');
         }
 
         public String getAccountNumber(){

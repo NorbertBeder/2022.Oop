@@ -3,22 +3,22 @@ package lab6_1;
 import java.util.ArrayList;
 
 public class Customer {
-    private static int numCustomers;
+    private static int numCustomers = 1;
     private final String firstName;
     private String lastName;
     private final ArrayList<BankAccount> accounts = new ArrayList<>();
     private final int id;
 
-    public Customer(String firstName, String lastName, int id) {
+    public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = id;
+        this.id = numCustomers;
+        numCustomers++;
     }
 
     public int getId() {
         return id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -30,6 +30,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public ArrayList<String> getAccountNumbers(){
+        ArrayList<String> accountNumbers = new ArrayList<>();
+        for (BankAccount account : accounts){
+            accountNumbers.add(account.getAccountNumber());
+        }
+        return accountNumbers;
     }
 
     public void addAccount(BankAccount account) {
@@ -53,12 +61,17 @@ public class Customer {
         }
     }
 
-    public String toString(){
-        StringBuffer result = new StringBuffer();
-        result.append(firstName + ' ' + lastName + " accounts:\n");
-        for (BankAccount bankAccount : accounts){
-            result.append("\t" + bankAccount.toString() + "\n");
-        }
-        return result.toString();
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", accounts=" + accounts +
+                ", id=" + id +
+                '}';
+    }
+
+    public int getNumAccounts() {
+        return accounts.size();
     }
 }
