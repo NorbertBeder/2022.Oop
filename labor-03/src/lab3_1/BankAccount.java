@@ -3,7 +3,7 @@ package lab3_1;
 public class BankAccount{
 
     private double balance;
-    private String accountNumber;
+    private final String accountNumber;
     public BankAccount(String accountNumber) {
         this.accountNumber = accountNumber;
     }

@@ -1,12 +1,19 @@
-package oop.labor04.lab4_2;
+package lab8_1;
 
-public class BankAccount{
+public class BankAccount {
 
-        private double balance;
-        private final String accountNumber;
+        protected double balance;
+        protected final String accountNumber;
+        public static final String PREFIX = "OTP";
+        protected static int numAccounts = 0;
 
-        public BankAccount(String accountNumber) {
-            this.accountNumber = accountNumber;
+        protected BankAccount() {
+            numAccounts++;
+            this.accountNumber = createAccountNumber();
+        }
+
+        private static String createAccountNumber(){
+            return String.format("%s%7d",PREFIX,numAccounts).replace(' ', '0');
         }
 
         public String getAccountNumber(){

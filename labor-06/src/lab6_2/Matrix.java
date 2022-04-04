@@ -38,7 +38,7 @@ public class Matrix {
     public static Matrix multiply(Matrix m1, Matrix m3) {
         Matrix matrix = new Matrix(m1.rows,m3.columns);
         for (int i = 0; i < matrix.rows; i++){
-            for (int j = 0; j < m3.columns; j++){
+            for (int j = 0; j < matrix.columns; j++){
                 double cells = 0;
                 for (int k = 0; k < m3.rows; k++){
                     cells += m1.data[i][k] * m3.data[k][j];
