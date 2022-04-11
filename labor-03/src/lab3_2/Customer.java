@@ -1,7 +1,7 @@
 package lab3_2;
 
 public class Customer {
-    private String firstName;
+    private final String firstName;
     private String lastName;
     public static final int MAX_ACCOUNTS = 10;
     private int numOfAccounts = 0;
