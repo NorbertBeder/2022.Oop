@@ -12,7 +12,7 @@ public class ArrayListQueue implements IQueue {
 
     @Override
     public boolean isEmpty() {
-        return items.isEmpty();
+        return !items.isEmpty();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class ArrayListQueue implements IQueue {
 
     @Override
     public Object deQueue() {
-        if(!isEmpty()){
+        if(isEmpty()){
             return items.remove(0);
         }
         return null;
@@ -41,4 +41,30 @@ public class ArrayListQueue implements IQueue {
     public void printQueue() {
         System.out.println(items);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ArrayListQueue that = (ArrayListQueue) o;
+
+        if(this.items.size() != that.items.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < items.size(); i++){
+            if(!this.items.get(i).equals(that.items.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 }

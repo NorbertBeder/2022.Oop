@@ -1,9 +1,9 @@
 package lab9_1;
 
 public interface IQueue {
-    public boolean isEmpty();
-    public boolean isFull();
-    public void enQueue(Object o);
-    public Object deQueue();
-    public void printQueue();
+    boolean isEmpty();
+    boolean isFull();
+    void enQueue(Object o);
+    Object deQueue();
+    void printQueue();
 }
