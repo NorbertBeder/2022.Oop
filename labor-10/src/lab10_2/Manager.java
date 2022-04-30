@@ -17,7 +17,8 @@ public class Manager extends Employee{
     public void setDepartment(String department) {
         this.department = department;
     }
+
     public String toString(){
-        return super.toString() + ", " + department;
+        return "Manager-" + super.toString() + ", " + department;
     }
 }

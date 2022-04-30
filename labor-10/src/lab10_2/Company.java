@@ -6,11 +6,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Company {
     private String name;
-    private ArrayList<Employee> employees;
+    private final ArrayList<Employee> employees = new ArrayList<>();
 
     public Company(String name) {
         this.name = name;
@@ -27,6 +28,7 @@ public class Company {
     public void hire(Employee employee){
         employees.add(employee);
     }
+
     public void hireAll(String fileName){
         try(Scanner scanner = new Scanner(new File(fileName))){
             while (scanner.hasNextLine()) {
@@ -45,6 +47,7 @@ public class Company {
                 if(items.length == 7){
                     String department = items[6].trim();
                     employees.add(new Manager(firstName,lastName,salary,date,department));
+
                 }else{
                     employees.add(new Employee(firstName,lastName,salary,date));
                 }
@@ -56,6 +59,25 @@ public class Company {
 
     public void fire(int index){
         employees.remove(index);
+    }
+
+    public void printAll(PrintStream ps){
+        for(Employee employee : employees){
+
+            ps.println(employee);
+        }
+    }
+
+    public void printManagers(PrintStream ps){
+        for(Employee employee : employees){
+            if(employee instanceof Manager){
+                ps.println(employee);
+            }
+        }
+    }
+
+    public void sortByComparator(Comparator<Employee> comp){
+        employees.sort(comp);
     }
 
 }
