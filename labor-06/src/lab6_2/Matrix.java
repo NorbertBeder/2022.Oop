@@ -18,9 +18,7 @@ public class Matrix {
         this.columns = data[0].length;
         this.data = new double[rows][columns];
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                this.data[i][j] = data[i][j];
-            }
+            System.arraycopy(data[i], 0, this.data[i], 0, columns);
         }
     }
 
@@ -29,24 +27,25 @@ public class Matrix {
         columns = m.columns;
         data = new double[rows][columns];
         for (int i = 0; i < rows; i++){
-            for (int j = 0; j < columns; j++){
-                data[i][j] = m.data[i][j];
-            }
+            System.arraycopy(m.data[i], 0, data[i], 0, columns);
         }
     }
 
-    public static Matrix multiply(Matrix m1, Matrix m3) {
-        Matrix matrix = new Matrix(m1.rows,m3.columns);
-        for (int i = 0; i < matrix.rows; i++){
-            for (int j = 0; j < matrix.columns; j++){
-                double cells = 0;
-                for (int k = 0; k < m3.rows; k++){
-                    cells += m1.data[i][k] * m3.data[k][j];
+    public static Matrix multiply(Matrix m1, Matrix m3) throws MatrixExceptions {
+        if(m1.columns == m3.rows) {
+            Matrix matrix = new Matrix(m1.rows, m3.columns);
+            for (int i = 0; i < matrix.rows; i++) {
+                for (int j = 0; j < matrix.columns; j++) {
+                    double cells = 0;
+                    for (int k = 0; k < m3.rows; k++) {
+                        cells += m1.data[i][k] * m3.data[k][j];
+                    }
+                    matrix.data[i][j] = cells;
                 }
-                matrix.data[i][j] = cells;
             }
+            return matrix;
         }
-        return matrix;
+        throw new MatrixExceptions("Improper matrix dimensions");
     }
 
     public static Matrix transpose(Matrix m3) {
@@ -85,13 +84,16 @@ public class Matrix {
         }
     }
 
-    public static Matrix add(Matrix m1, Matrix m2){
-        Matrix matrix = new Matrix(m1.rows,m1.columns);
-        for (int i = 0; i < matrix.rows; i++){
-            for (int j = 0; j < matrix.columns; j++){
-                matrix.data[i][j] = m1.data[i][j] + m2.data[i][j];
+    public static Matrix add(Matrix m1, Matrix m2) throws MatrixExceptions {
+        if(m1.columns == m2.rows) {
+            Matrix matrix = new Matrix(m1.rows, m1.columns);
+            for (int i = 0; i < matrix.rows; i++) {
+                for (int j = 0; j < matrix.columns; j++) {
+                    matrix.data[i][j] = m1.data[i][j] + m2.data[i][j];
+                }
             }
+            return matrix;
         }
-        return matrix;
+        throw new MatrixExceptions("Improper matrix dimensions");
     }
 }
