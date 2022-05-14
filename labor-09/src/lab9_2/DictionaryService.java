@@ -3,6 +3,7 @@ package lab9_2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DictionaryService {
@@ -22,6 +23,8 @@ public class DictionaryService {
         try(Scanner sc = new Scanner(new File(fileName))){
             while(sc.hasNext()){
                 String word = sc.next().trim();
+                word = word.replaceAll("[^A-Za-z]","").trim();
+                word = word.toLowerCase();
                 if(word.isEmpty()){
                     continue;
                 }

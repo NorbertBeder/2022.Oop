@@ -1,6 +1,6 @@
 package lab10_3;
 
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
     private final int ID;
     private final String name;
     private int amount;
@@ -13,28 +13,18 @@ public class Product implements Comparable<Product>{
         this.price = price;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     public int getAmount() {
         return amount;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void increaseAmount(int newAmount){
+    public void increaseAmount(int newAmount) {
         this.amount += newAmount;
     }
 
-    public int compareTo(Product product){
-        return this.price-product.price;
+    public int compareTo(Product product) {
+        return this.ID - product.ID;
     }
 
 
